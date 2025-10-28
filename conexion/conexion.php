@@ -2,7 +2,7 @@
 function conectar()
 {
 	global $con;
-	$con = mysqli_connect("localhost","root","","ucp2025");
+	$con = mysqli_connect("localhost","root","","menu");
 		/* comprobar la conexión */
 		if (mysqli_connect_errno()) 
 		{

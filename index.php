@@ -1,4 +1,4 @@
-<?php // include('conexion/conection.php');?>
+<?php include('conexion/conexion.php');?>
 <?php include('include/head.php');?>
 <?php include('include/header.php');?>
 
@@ -6,12 +6,19 @@
     <div class="resolucion">
         <ul class="menu">
         <?php
-        for ($i = 4; $i != 19;$i++) {
-            echo '<li><a href="resolucion/ejercicio'.$i.'.php">Ejercicio '.$i.'</a></li>';
+        conectar();
+        $sql = "SELECT * FROM actividades";
+        $resultado = $con->query($sql);
+
+        if($resultado->num_rows > 0) {
+            while($fila = $resultado->fetch_assoc()) {
+                echo '<li><a href='. $fila["ruta"] .'>'. $fila["actividad"] . '</a></li>';
+            }
         }
+        desconectar();
         ?>
         </ul>
     </div>
 </main>
 
-<?php include('include/footer.php');?>
+<?php include('include/footer.php');?>  
